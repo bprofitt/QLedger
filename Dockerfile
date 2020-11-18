@@ -11,10 +11,10 @@ ADD . /go/src/github.com/RealImage/QLedger
 RUN go install github.com/RealImage/QLedger
 
 # Add aws-env for db connect string
-RUN wget https://github.com/Droplr/aws-env/raw/master/bin/aws-env-linux-amd64 -O /bin/aws-env && \
-  chmod +x /bin/aws-env
+RUN wget https://github.com/Droplr/aws-env/raw/master/bin/aws-env-linux-amd64 -O /bin/aws-env
+RUN chmod +x /bin/aws-env
 
-CMD ["/bin/bash", "-c", "eval $(AWS_ENV_PATH=/dev/ AWS_REGION=ca-central-1 ./aws-env) && /go/bin/QLedger"]
+CMD ["/bin/bash", "-c", "eval $(AWS_ENV_PATH=/dev/ AWS_REGION=ca-central-1 /bin/aws-env) && /go/bin/QLedger"]
 # Run the QLedger command by default when the container starts.
 #ENTRYPOINT /go/bin/QLedger
 

@@ -14,7 +14,7 @@ RUN go install github.com/RealImage/QLedger
 RUN wget https://github.com/Droplr/aws-env/raw/master/bin/aws-env-linux-amd64 -O /bin/aws-env && \
   chmod +x /bin/aws-env
 
-CMD eval $(AWS_ENV_PATH=/dev/ AWS_REGION=ca-central-1 ./aws-env) && /go/bin/QLedger
+CMD ["/bin/bash", "-c", "eval CMD eval $(AWS_ENV_PATH=/dev/ AWS_REGION=ca-central-1 ./aws-env) && /go/bin/QLedger"]
 # Run the QLedger command by default when the container starts.
 #ENTRYPOINT /go/bin/QLedger
 

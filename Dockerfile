@@ -1,7 +1,7 @@
 # Start from a Debian image with the latest version of Go installed
 # and a workspace (GOPATH) configured at /go.
 FROM golang:1.11
-ENV LEDGER_AUTH_TOKEN=123456
+ENV LEDGER_AUTH_TOKEN=1234567890
 
 # Copy the local package files to the container's workspace.
 ADD . /go/src/github.com/RealImage/QLedger

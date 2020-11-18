@@ -1,6 +1,7 @@
 # Start from a Debian image with the latest version of Go installed
 # and a workspace (GOPATH) configured at /go.
 FROM golang:1.11
+ENV LEDGER_AUTH_TOKEN=123456
 
 # Copy the local package files to the container's workspace.
 ADD . /go/src/github.com/RealImage/QLedger
@@ -14,7 +15,7 @@ RUN go install github.com/RealImage/QLedger
 RUN wget https://github.com/Droplr/aws-env/raw/master/bin/aws-env-linux-amd64 -O /bin/aws-env
 RUN chmod +x /bin/aws-env
 
-CMD ["/bin/bash", "-c", "eval $(AWS_ENV_PATH=/dev/ AWS_REGION=ca-central-1 /bin/aws-env) && EXPORT LEDGER_AUTH_TOKEN=123456 && /go/bin/QLedger"]
+CMD ["/bin/bash", "-c", "eval $(AWS_ENV_PATH=/dev/ AWS_REGION=ca-central-1 /bin/aws-env) && /go/bin/QLedger"]
 # Run the QLedger command by default when the container starts.
 #ENTRYPOINT /go/bin/QLedger
 

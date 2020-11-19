@@ -2,6 +2,8 @@
 # and a workspace (GOPATH) configured at /go.
 FROM golang:1.11
 ENV LEDGER_AUTH_TOKEN=1234567890
+ENV MIGRATION_FILES_PATH=file:///go/src/github.com/RealImage/QLedger/migrations/postgres
+ENV PORT=7000
 
 # Copy the local package files to the container's workspace.
 ADD . /go/src/github.com/RealImage/QLedger

@@ -1,7 +1,7 @@
 # Start from a Debian image with the latest version of Go installed
 # and a workspace (GOPATH) configured at /go.
 FROM golang:1.11
-ENV LEDGER_AUTH_TOKEN=1234567890
+ENV LEDGER_AUTH_TOKEN=testtoken
 ENV MIGRATION_FILES_PATH=file:///go/src/github.com/RealImage/QLedger/migrations/postgres
 ENV PORT=7000
 
